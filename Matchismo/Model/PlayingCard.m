@@ -74,7 +74,7 @@
     if ([otherCards count] == 1) {
         id card = [otherCards firstObject];
         if ([card isKindOfClass:[PlayingCard class]]) { //introspection
-            PlayingCard *otherCard = [otherCards firstObject];
+            PlayingCard *otherCard = (PlayingCard *)card;
             if (self.rank == otherCard.rank) {
                 score = 4;
             } else if ([self.suit isEqualToString:otherCard.suit]) {
