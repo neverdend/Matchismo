@@ -48,8 +48,6 @@
         [self.cards removeObjectAtIndex:index];
     }
     
-    NSLog(@"%d cards left in the deck.", [self.cards count]);
-    
     return randomCard;
 }
 

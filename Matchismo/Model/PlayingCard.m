@@ -67,5 +67,21 @@
     }
 }
 
+//override the method in Card
+- (int)match:(NSArray *)otherCards
+{
+    int score = 0;
+    if ([otherCards count] == 1) {
+        PlayingCard *otherCard = [otherCards firstObject];
+        if (self.rank == otherCard.rank) {
+            score = 4;
+        } else if ([self.suit isEqualToString:otherCard.suit]) {
+            score = 1;
+        }
+    } else if ([otherCards count] == 2) {
+        score += [self match:@[otherCards[0]]] + [self match:@[otherCards[1]]] + [otherCards[0] match:@[otherCards[1]]];
+    }
+    return score;
+}
 
 @end
