@@ -66,8 +66,13 @@ static const int COST_TO_CHOOSE = 1;
     
     if (self.mode == 0) {   // 2-card mode
         if (!card.isMatched) {  // 如果card已经matched则不需要进行更多操作
-            if (card.isChosen) card.chosen = NO;    //点击翻开的牌，则让牌翻回
+            if (card.isChosen) {    //点击翻开的牌，则让牌翻回
+                card.chosen = NO;
+                self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"Flip back %@. ", card.contents]];
+            }
             else {  //点击未翻开的牌，如果有其他翻开的牌则与翻开的牌比较
+                // generate the score message
+                self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"Flip up %@, cost %d. ", card.contents, COST_TO_CHOOSE]];
                 // 寻找其他翻开的牌
                 for (Card* otherCard in self.cards) {
                     if (otherCard.isChosen && !otherCard.isMatched) {   //该条件不会匹配到card自己！
@@ -82,21 +87,24 @@ static const int COST_TO_CHOOSE = 1;
                             self.score -= MISMATCH_PENALTY;
                             otherCard.chosen = NO;
                             // generate the score message
-                            self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"%@ %@ don't match! Cost %d penalty! ", card.contents, otherCard.contents, MISMATCH_PENALTY]];
+                            self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"%@ %@ don't match, Cost %d penalty! ", card.contents, otherCard.contents, MISMATCH_PENALTY]];
                         }
                         break;
                     }
                 }
                 self.score -= COST_TO_CHOOSE;
                 card.chosen = YES;
-                // generate the score message
-                self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"Cost %d to choose. ", COST_TO_CHOOSE]];
             }
         }
     } else if (self.mode == 1) {    // 3-card mode
         if (!card.isMatched) {
-            if (card.isChosen)  card.chosen = NO;
-            else {
+            if (card.isChosen) {    //点击翻开的牌，则让牌翻回
+                card.chosen = NO;
+                self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"Flip back %@. ", card.contents]];
+            }
+            else {  //点开未翻开的牌
+                // generate the score message
+                self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"Flip up %@, cost %d. ", card.contents, COST_TO_CHOOSE]];
                 NSMutableArray *otherCards = [[NSMutableArray alloc]init];
                 for (Card *otherCard in self.cards) {
                     if (otherCard.isChosen && !otherCard.isMatched) {   //不会匹配到card自己
@@ -119,13 +127,11 @@ static const int COST_TO_CHOOSE = 1;
                             otherCard.chosen = NO;
                         }
                         // generate the score message
-                        self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"%@ %@ %@ don't match! Cost %d penalty! ", card.contents, ((Card *)otherCards[0]).contents, ((Card *)otherCards[1]).contents, MISMATCH_PENALTY]];
+                        self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"%@ %@ %@ don't match, Cost %d penalty! ", card.contents, ((Card *)otherCards[0]).contents, ((Card *)otherCards[1]).contents, MISMATCH_PENALTY]];
                     }
                 }
                 card.chosen = YES;
                 self.score -= COST_TO_CHOOSE;
-                // generate the score message
-                self.scoreMessage = [self.scoreMessage stringByAppendingString:[NSString stringWithFormat:@"Cost %d to choose. ", COST_TO_CHOOSE]];
             }
         }
     }
