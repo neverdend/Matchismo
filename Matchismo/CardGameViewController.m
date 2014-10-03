@@ -8,7 +8,6 @@
 
 #import "CardGameViewController.h"
 #import "Deck.h"
-#import "PlayingCardDeck.h"
 #import "PlayingCard.h"
 #import "CardMatchingGame.h"
 
@@ -46,11 +45,16 @@
 {
     if (!_game) {
         _game = [[CardMatchingGame alloc]initWithCardCount:[self.cardButtons count]
-                                                 usingDeck:[[PlayingCardDeck alloc]init]];
+                                                 usingDeck:[self createDeck]];
         // lazy instantiate isFirstFlip
         _isFirstFlip = YES;
     }
     return _game;
+}
+// used to instantiate @property game
+- (Deck *)createDeck    // abstract
+{
+    return nil;
 }
 
 // lazy instantiate @property messageLog
@@ -107,7 +111,7 @@
 - (IBAction)touchRestartGameButton:(id)sender {
     // 重置self.game
     self.game = [[CardMatchingGame alloc]initWithCardCount:[self.cardButtons count]
-                                                 usingDeck:[[PlayingCardDeck alloc] init]];
+                                                 usingDeck:[self createDeck]];
     // 重置self.isFirstFlip（从而重置self.gameModeControl，重置self.game.mode）
     self.isFirstFlip = YES;
     // 重置self.messageLog，在getter中会lazy instantiate为空数组
