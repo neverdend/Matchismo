@@ -10,7 +10,7 @@
 #import "Deck.h"
 #import "Card.h"
 
-@interface CardMatchingGame : NSObject
+@interface PlayingCardGame : NSObject
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck;

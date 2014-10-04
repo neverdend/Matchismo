@@ -9,11 +9,11 @@
 #import "CardGameViewController.h"
 #import "Deck.h"
 #import "PlayingCard.h"
-#import "CardMatchingGame.h"
+#import "PlayingCardGame.h"
 
 @interface CardGameViewController ()
 
-@property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) PlayingCardGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeControl;   //index: 0-2card, 1-3card
@@ -41,10 +41,10 @@
 }
 
 // getter of @property game, lazy instantiate
-- (CardMatchingGame *)game
+- (PlayingCardGame *)game
 {
     if (!_game) {
-        _game = [[CardMatchingGame alloc]initWithCardCount:[self.cardButtons count]
+        _game = [[PlayingCardGame alloc]initWithCardCount:[self.cardButtons count]
                                                  usingDeck:[self createDeck]];
         // lazy instantiate isFirstFlip
         _isFirstFlip = YES;
@@ -77,7 +77,7 @@
     [self updateUI];
 }
 
-- (void)updateUI
+- (void)updateUI    // messageLog的值也是在该方法中更新
 {
     for (UIButton *cardButton in self.cardButtons) {
         int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
@@ -91,10 +91,11 @@
     if (self.isFirstFlip) {    //此时是在touchRestartGameButton:(id)sender中被调用
         self.messageLabel.text = @"";
     } else {    //此时是在touchCardButton:(UIButton *)sender中被调用
-        // 更新messageSlider的值
+        // 更新messageLabel的值
         self.messageLabel.text = self.game.scoreMessage;
         // 更新messageLog的值
         [self.messageLog addObject:self.game.scoreMessage];
+        // 更新messageSlider的值
         if (self.messageSlider.value != self.messageSlider.maximumValue)
             [self.messageSlider setValue:self.messageSlider.maximumValue animated:NO];  //setValue方法不会触发value changed事件
     }
@@ -110,7 +111,7 @@
 
 - (IBAction)touchRestartGameButton:(id)sender {
     // 重置self.game
-    self.game = [[CardMatchingGame alloc]initWithCardCount:[self.cardButtons count]
+    self.game = [[PlayingCardGame alloc]initWithCardCount:[self.cardButtons count]
                                                  usingDeck:[self createDeck]];
     // 重置self.isFirstFlip（从而重置self.gameModeControl，重置self.game.mode）
     self.isFirstFlip = YES;

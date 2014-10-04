@@ -6,15 +6,15 @@
 //  Copyright (c) 2014年 Chao Chen. All rights reserved.
 //
 
-#import "CardMatchingGame.h"
+#import "PlayingCardGame.h"
 
-@interface CardMatchingGame ()
+@interface PlayingCardGame ()
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) NSMutableArray *cards;    //of card
 @property (nonatomic, strong, readwrite) NSString *scoreMessage; //pass the score message to controller
 @end
 
-@implementation CardMatchingGame
+@implementation PlayingCardGame
 
 // const vars
 static const int MISMATCH_PENALTY = 2;
