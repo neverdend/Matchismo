@@ -20,15 +20,14 @@
 
 @implementation CardGameViewController
 
-// getter of @property game, lazy instantiate
-- (CardGame *)game
+// 初始化property game，并准备UI
+- (void)viewDidLoad
 {
-    if (!_game) {
-        _game = [self createGame];
-    }
-    return _game;
+    self.game = [self createGame];
+    [self updateUI];
 }
-// used to instantiate @property game. ABSTRACT!
+
+// used to initiate @property game. ABSTRACT!
 - (CardGame *)createGame
 {
     return nil;
@@ -68,7 +67,7 @@
     self.messageLabel.text = self.game.scoreMessage;
     [self.messageSlider setValue:self.messageSlider.maximumValue animated:NO];
 }
-// used by updateUI. ABSTRACT!
+// used by updateUI, 更新每张牌的显示. ABSTRACT!
 - (void)updateCardButton:(UIButton *)cardButton using:(Card *)card
 {
     // ABSTRACT!
@@ -77,9 +76,9 @@
 // 更新messageLog
 - (void)updateMessageLog
 {
-    [self.messageLog addObject:self.game.scoreMessage];
+    if (![self.game.scoreMessage isEqualToString:@""])
+        [self.messageLog addObject:self.game.scoreMessage];
 }
-
 
 - (IBAction)touchRestartGameButton:(UIButton *)sender {
     // 重置self.game

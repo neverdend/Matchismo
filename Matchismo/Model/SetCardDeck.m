@@ -23,7 +23,7 @@
                     for (NSString *color in [SetCard validColor])
                         [self addCard:[[SetCard alloc]initWithNmuber:[number intValue]
                                                            andSymbol:symbol
-                                                          andShading:[shading doubleValue]
+                                                          andShading:[shading intValue]
                                                             andColor:color]];
     }
     return self;

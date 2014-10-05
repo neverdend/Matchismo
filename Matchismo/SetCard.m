@@ -16,22 +16,22 @@
 
 - (instancetype)initWithNmuber:(NSUInteger)number
                      andSymbol:(NSString *)symbol
-                    andShading:(double)shading
+                    andShading:(int)shading
                       andColor:(NSString *)color
 {
     self = [super init];
     if (self) {
         if ([[SetCard validNumber]containsObject:[NSNumber numberWithInt:number ]]) {
-            self.shading = number;
+            self.number = number;
         } else {
             return nil;
         }
         if ([[SetCard validSymbol]containsObject:symbol]) {
-            self.color = symbol;
+            self.symbol = symbol;
         } else {
             return nil;
         }
-        if ([[SetCard validShading]containsObject:[NSNumber numberWithDouble:shading]]) {
+        if ([[SetCard validShading]containsObject:[NSNumber numberWithInt:shading]]) {
             self.shading = shading;
         } else {
             return nil;
@@ -89,14 +89,28 @@
     return @[@"▲", @"●", @"■"];
 }
 
-+ (NSArray *)validShading
++ (NSArray *)validShading   // 除以10作为alpha的值
 {
-    return @[@0.3, @0.6, @1];
+    return @[@1, @2, @3];
 }
 
 + (NSArray *)validColor
 {
-    return @[@"red", @"green", @"blue"];
+    return @[@"red", @"black", @"blue"];
+}
+
+// getter of property contents (inherited from Card)
+- (NSString *)contents
+{
+    NSString *str = @"";
+    for (int i = 0; i < self.number; i++)
+        str = [str stringByAppendingString:self.symbol];
+    return str;
+}
+
+- (NSString *)fullContents
+{
+    return [self.contents stringByAppendingString:[NSString stringWithFormat:@"(c:%@,sh:%d)", self.color, self.shading]];
 }
 
 @end

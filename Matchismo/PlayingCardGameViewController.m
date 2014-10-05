@@ -38,12 +38,12 @@
 {
     return [UIImage imageNamed:card.isChosen?@"cardfront":@"cardback"];
 }
-
 //end implement abstract methods in super class
 
 // initialize isFirstFlip in viewDidLoad
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     self.isFirstFlip = YES;
 }
 
