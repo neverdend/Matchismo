@@ -1,17 +1,15 @@
 //
-//  CardMatchingGame.m
+//  PlayingCardGame.m
 //  Matchismo
 //
-//  Created by 陈超 on 14-9-29.
+//  Created by 陈超 on 14-10-5.
 //  Copyright (c) 2014年 Chao Chen. All rights reserved.
 //
 
 #import "PlayingCardGame.h"
 
-@interface PlayingCardGame ()
-@property (nonatomic, readwrite) NSInteger score;
-@property (nonatomic, strong) NSMutableArray *cards;    //of card
-@property (nonatomic, strong, readwrite) NSString *scoreMessage; //pass the score message to controller
+@interface PlayingCardGame()
+
 @end
 
 @implementation PlayingCardGame
@@ -21,43 +19,6 @@ static const int MISMATCH_PENALTY = 2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
-// getter of cards, lazy instantiate
-- (NSMutableArray *)cards
-{
-    if (!_cards) {
-        _cards = [[NSMutableArray alloc] init];
-    }
-    return _cards;
-}
-
-// constructor
-- (instancetype)initWithCardCount:(NSUInteger)count
-                        usingDeck:(Deck *)deck
-{
-    self = [super init];
-    if (self) {
-        for (int i = 0; i < count; i++) {
-            Card *card = [deck drawRandomCard];
-            if (card) {
-                [self.cards addObject:card];
-            }
-            else {
-                self = nil;
-                break;
-            }
-        }
-        self.score = 0; //默认是0，不初始化也行
-    }
-    return self;
-}
-
-// peek the card corresponding to the given index
-- (Card *)cardAtIndex:(NSUInteger)index
-{
-    return (index < [self.cards count])?self.cards[index]:nil;
-}
-
-// user choose the card corresponding to the given index
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
     Card *card = [self cardAtIndex:index];
@@ -136,5 +97,4 @@ static const int COST_TO_CHOOSE = 1;
         }
     }
 }
-
 @end

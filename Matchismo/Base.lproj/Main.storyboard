@@ -422,7 +422,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="bHB-wC-T10"/>
                     <connections>
-                        <outlet property="gameModeControl" destination="lG2-uA-ehp" id="wid-f0-29w"/>
+                        <outlet property="gameModeControl" destination="lG2-uA-ehp" id="U7p-pb-dtr"/>
                         <outlet property="messageLabel" destination="1pN-jm-1te" id="hby-nQ-RX8"/>
                         <outlet property="messageSlider" destination="vau-GC-BaX" id="XLe-ax-qXA"/>
                         <outlet property="scoreLabel" destination="N1R-7s-8jU" id="hCt-11-xBC"/>
