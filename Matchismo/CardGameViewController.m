@@ -142,6 +142,16 @@
     self.messageLabel.text = self.messageLog[index];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([self isMemberOfClass:[CardGameViewController class]]) {
+        NSLog(@"in viewWillAppear");
+        NSLog(@"number of buttons are %d", [self.cardButtons count]);
+        self.scoreLabel.text = @"heheh";
+    }
+}
+
 /*
 - (void)viewDidLoad
 {
