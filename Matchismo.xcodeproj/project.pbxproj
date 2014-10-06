@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A2A264B19D94B7A004E2C1A /* CardGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2A264A19D94B7A004E2C1A /* CardGame.m */; };
+		2A332BBC19E24F4900A930A0 /* GameHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A332BBB19E24F4900A930A0 /* GameHistoryViewController.m */; };
 		2A3DE95F19CDB035001225DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3DE95E19CDB035001225DD /* Foundation.framework */; };
 		2A3DE96119CDB035001225DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3DE96019CDB035001225DD /* CoreGraphics.framework */; };
 		2A3DE96319CDB035001225DD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3DE96219CDB035001225DD /* UIKit.framework */; };
@@ -47,6 +48,8 @@
 /* Begin PBXFileReference section */
 		2A2A264919D94B7A004E2C1A /* CardGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardGame.h; path = Model/CardGame.h; sourceTree = "<group>"; };
 		2A2A264A19D94B7A004E2C1A /* CardGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardGame.m; path = Model/CardGame.m; sourceTree = "<group>"; };
+		2A332BBA19E24F4900A930A0 /* GameHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHistoryViewController.h; sourceTree = "<group>"; };
+		2A332BBB19E24F4900A930A0 /* GameHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHistoryViewController.m; sourceTree = "<group>"; };
 		2A3DE95B19CDB035001225DD /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A3DE95E19CDB035001225DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A3DE96019CDB035001225DD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,8 @@
 				2ABB7D3619DE32BF0078B4C9 /* PlayingCardGameViewController.m */,
 				2AAB017C19E13E5500754571 /* SetCardGameViewController.h */,
 				2AAB017D19E13E5500754571 /* SetCardGameViewController.m */,
+				2A332BBA19E24F4900A930A0 /* GameHistoryViewController.h */,
+				2A332BBB19E24F4900A930A0 /* GameHistoryViewController.m */,
 				2A3DE99619CE8DF6001225DD /* Model */,
 				2A3DE97619CDB035001225DD /* Images.xcassets */,
 				2A3DE96519CDB035001225DD /* Supporting Files */,
@@ -316,6 +321,7 @@
 				2A3DE96F19CDB035001225DD /* CardGameAppDelegate.m in Sources */,
 				2AAB017E19E13E5500754571 /* SetCardGameViewController.m in Sources */,
 				2A3DE97519CDB035001225DD /* CardGameViewController.m in Sources */,
+				2A332BBC19E24F4900A930A0 /* GameHistoryViewController.m in Sources */,
 				2A3DE96B19CDB035001225DD /* main.m in Sources */,
 				2ABB7D4019E0DAAE0078B4C9 /* SetCardDeck.m in Sources */,
 				2ABB7D4319E0EAD90078B4C9 /* PlayingCardGame.m in Sources */,

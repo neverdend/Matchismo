@@ -8,6 +8,7 @@
 
 #import "CardGameViewController.h"
 #import "Deck.h"
+#import "GameHistoryViewController.h"
 
 @interface CardGameViewController ()
 
@@ -110,17 +111,15 @@
     self.messageLabel.text = self.messageLog[index];
 }
 
-/*
-- (void)viewDidLoad
+// prepare for segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    if ([segue.identifier isEqualToString:@"Show History"]) {
+        if ([segue.destinationViewController isKindOfClass:[GameHistoryViewController class]]) {
+            GameHistoryViewController *ghvc = (GameHistoryViewController *)segue.destinationViewController;
+            ghvc.messageLog = self.messageLog;
+            
+        }
+    }
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-*/
 @end
