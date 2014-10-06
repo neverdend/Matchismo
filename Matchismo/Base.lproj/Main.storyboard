@@ -699,7 +699,7 @@
         <scene sceneID="srf-MQ-txr">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="QoN-f5-8As" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jz0-ye-VwV">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -714,11 +714,11 @@
             </objects>
             <point key="canvasLocation" x="183" y="-112"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Playing-->
         <scene sceneID="7SD-x9-6ck">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gcm-VI-j9q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="bHB-wC-T10"/>
+                    <tabBarItem key="tabBarItem" title="Playing" image="TabBarImage1" id="bHB-wC-T10"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YNU-dn-1yO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -733,11 +733,11 @@
             </objects>
             <point key="canvasLocation" x="748" y="-391"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Set-->
         <scene sceneID="2HN-3u-eva">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QcA-4j-VzH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="i3A-oY-E1I"/>
+                    <tabBarItem key="tabBarItem" title="Set" image="TabBarImage2" id="i3A-oY-E1I"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="au2-f9-jif">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -754,6 +754,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TabBarImage1" width="32" height="32"/>
+        <image name="TabBarImage2" width="32" height="32"/>
         <image name="cardback" width="64" height="96"/>
         <image name="cardfront" width="64" height="96"/>
     </resources>
