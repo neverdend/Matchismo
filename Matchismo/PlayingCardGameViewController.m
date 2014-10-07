@@ -8,8 +8,10 @@
 
 #import "PlayingCardGameViewController.h"
 #import "Deck.h"
+#import "PlayingCard.h"
 #import "PlayingCardDeck.h"
 #import "PlayingCardGame.h"
+#import "PlayingCardView.h"
 
 @interface PlayingCardGameViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeControl;   //index: 0-2card, 1-3card
@@ -24,19 +26,14 @@
     return [[PlayingCardGame alloc]initWithCardCount:[self getCardCount] usingDeck:[[PlayingCardDeck alloc]init]];
 }
 
-- (void)updateCardButton:(UIButton *)cardButton using:(Card *)card
+- (void)updateCardView:(UIView *)cardView using:(Card *)card
 {
-    [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-    [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-    cardButton.enabled = !card.isMatched;
-}
-- (NSString *)titleForCard:(Card *)card
-{
-    return card.isChosen?card.contents:@"";
-}
-- (UIImage *)backgroundImageForCard:(Card *)card
-{
-    return [UIImage imageNamed:card.isChosen?@"cardfront":@"cardback"];
+    ((PlayingCardView *)cardView).rank = ((PlayingCard *)card).rank;
+    ((PlayingCardView *)cardView).suit = ((PlayingCard *)card).suit;
+    ((PlayingCardView *)cardView).faceUp = card.isChosen;
+    if (card.isMatched)
+        cardView.alpha = 0.5;
+    [cardView setNeedsDisplay];
 }
 //end implement abstract methods in super class
 
@@ -62,10 +59,10 @@
     _isFirstFlip = isFirstFlip;
 }
 
-// override touchCardButton，设置isFirstFlip和game.mode的值
-- (IBAction)touchCardButton:(UIButton *)sender
+// override tapCardView:，设置isFirstFlip和game.mode的值
+- (IBAction)tapCardView:(UITapGestureRecognizer *)gesture
 {
-    [super touchCardButton:sender];
+    [super tapCardView:gesture];
     // set isFirstFlip and game.mode
     if (self.isFirstFlip) {
         // 设置game mode

@@ -14,10 +14,10 @@
 @interface CardGameViewController : UIViewController
 
 - (CardGame *)createGame;   //abstract
-- (void)updateCardButton:(UIButton *)cardButton using:(Card *)card; //abstract
+- (void)updateCardView:(UIView *)cardView using:(Card *)card; //abstract
 
 - (NSUInteger)getCardCount; //accessed by subclass
-- (IBAction)touchCardButton:(UIButton *)sender; //accessed by subclass
+- (IBAction)tapCardView:(UITapGestureRecognizer *)gesture; //accessed by subclass
 - (IBAction)touchRestartGameButton:(UIButton *)sender;  //accessed by subclass
 
 @property (strong, nonatomic) CardGame *game;   //accessed by subclass

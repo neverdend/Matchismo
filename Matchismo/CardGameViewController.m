@@ -12,7 +12,7 @@
 
 @interface CardGameViewController ()
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *cardViews;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UISlider *messageSlider;
@@ -24,6 +24,11 @@
 // 初始化property game，并准备UI
 - (void)viewDidLoad
 {
+    // 设置card的gesture recognizer
+    for (UIView *cardView in self.cardViews) {
+        [cardView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCardView:)]];
+    }
+    
     self.game = [self createGame];
     [self updateUI];
 }
@@ -36,7 +41,7 @@
 // used by subclass to implement createGame
 - (NSUInteger)getCardCount
 {
-    return [self.cardButtons count];
+    return [self.cardViews count];
 }
 
 // lazy instantiate @property messageLog
@@ -46,22 +51,22 @@
     return _messageLog;
 }
 
-- (IBAction)touchCardButton:(UIButton *)sender
+- (IBAction)tapCardView:(UITapGestureRecognizer *)gesture
 {
-    int chooseButtonIndex = [self.cardButtons indexOfObject:sender];
-    [self.game chooseCardAtIndex:chooseButtonIndex];
-    // updateUI中会用到isFirstFlip的值，所以先设置isFirstFlip
+    int chooseCardIndex = [self.cardViews indexOfObject:gesture.view];
+    [self.game chooseCardAtIndex:chooseCardIndex];
     [self updateUI];
     [self updateMessageLog];
 }
 
+
 // 更新所有牌、scoreLabel、messageLabel的显示
 - (void)updateUI
 {
-    for (UIButton *cardButton in self.cardButtons) {
-        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
-        Card *card = [self.game cardAtIndex:cardButtonIndex];
-        [self updateCardButton:cardButton using:card];
+    for (UIView *cardView in self.cardViews) {
+        int cardIndex = [self.cardViews indexOfObject:cardView];
+        Card *card = [self.game cardAtIndex:cardIndex];
+        [self updateCardView:cardView using:card];
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.messageLabel.alpha = 1;
@@ -69,7 +74,7 @@
     [self.messageSlider setValue:self.messageSlider.maximumValue animated:NO];
 }
 // used by updateUI, 更新每张牌的显示. ABSTRACT!
-- (void)updateCardButton:(UIButton *)cardButton using:(Card *)card
+- (void)updateCardView:(UIView *)cardView using:(Card *)card
 {
     // ABSTRACT!
 }
