@@ -587,6 +587,35 @@
             </objects>
             <point key="canvasLocation" x="1868" y="-91"/>
         </scene>
+        <!--Test Set Card View Controller - Item-->
+        <scene sceneID="tfq-gF-j3K">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k31-ZT-hd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="LFB-WD-Y6S" customClass="TestSetCardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KeA-fg-6Be"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZaU-az-UgO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CTe-i9-eWv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ggi-VT-wIB" customClass="SetCardView">
+                                <rect key="frame" x="130" y="219.5" width="60" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="3hD-uI-zAj"/>
+                    <connections>
+                        <outlet property="setCardView" destination="Ggi-VT-wIB" id="LDR-lK-EGy"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="748" y="760"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="srf-MQ-txr">
             <objects>
@@ -600,6 +629,7 @@
                     <connections>
                         <segue destination="Gcm-VI-j9q" kind="relationship" relationship="viewControllers" id="xTu-S2-fVL"/>
                         <segue destination="QcA-4j-VzH" kind="relationship" relationship="viewControllers" id="VSe-RK-hZI"/>
+                        <segue destination="LFB-WD-Y6S" kind="relationship" relationship="viewControllers" id="Akg-63-0Z7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ig8-r9-BpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,6 +686,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5JO-7Y-wKc"/>
+        <segue reference="vlY-eW-jtZ"/>
     </inferredMetricsTieBreakers>
 </document>

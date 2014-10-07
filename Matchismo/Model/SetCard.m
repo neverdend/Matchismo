@@ -86,7 +86,7 @@
 
 + (NSArray *)validSymbol
 {
-    return @[@"▲", @"●", @"■"];
+    return @[@"♦︎", @"●", @"■"];
 }
 
 + (NSArray *)validShading   // 除以10作为alpha的值
@@ -96,7 +96,7 @@
 
 + (NSArray *)validColor
 {
-    return @[@"red", @"black", @"blue"];
+    return @[@"green", @"red", @"purple"];
 }
 
 // getter of property contents (inherited from Card)

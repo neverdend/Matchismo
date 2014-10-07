@@ -85,7 +85,7 @@
     [roundedRect addClip];
     
     [[UIColor whiteColor] setFill];
-    UIRectFill(self.bounds);
+    UIRectFill(self.bounds);    // 由于有clip所以只会在roundedRect区域内有白色
     
     [[UIColor blackColor] setStroke];
     [roundedRect stroke];

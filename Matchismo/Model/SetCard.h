@@ -11,9 +11,9 @@
 @interface SetCard : Card
 
 @property (nonatomic) NSUInteger number;    //1, 2, 3
-@property (nonatomic, strong) NSString *symbol;     //▲, ●, ■
+@property (nonatomic, strong) NSString *symbol;     //♦︎, ●, ■
 @property (nonatomic) int shading;       //1, 2, 3
-@property (nonatomic, strong) NSString *color;       //red, green, blue (model中不能使用UIKit中的类，如UIColor)
+@property (nonatomic, strong) NSString *color;       //green, red, purple (model中不能使用UIKit中的类，如UIColor)
 
 - (instancetype)initWithNmuber:(NSUInteger)number
                      andSymbol:(NSString *)symbol
